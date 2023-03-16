@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <title>COSC475 HW4 Robot</title>
+    <style>
+        .slide-container {
+            width: 200px;
+            border: 50px;
+            /* padding: 10px; */
+            display: flex;
+            flex-direction:column;
+            gap: 10px;
+
+            border-width:3px;
+            border-style:solid;
+            border-color:lightgrey;
+        }
+        .ui-container {
+            width: 800px;
+            display: flex;
+            flex-wrap: no wrap;
+        }
+    </style>
+    <script src="lib/gl-matrix.js"></script>
+    <script type="module" src="robot.js" defer></script>
+</head>
+
+<body>
+    <h1>Robot</h1>
+    <canvas id="canvas" width="512" height="512"></canvas>
+
+    <div class = "ui-container">
+        <fieldset class = "slide-container" id = "torso">
+            <legend>Torso</legend>
+            <fieldset class = "slide-container">
+                <legend>Translation</legend>
+                <div>
+                    <span>X:</span>
+                    <input type="range" min="-0.8" max="0.8" step = "0.01" value="0.0" class="slider" id="torso-x">
+                    <span class="indicator" attached="torso-x"></span>
+                </div>
+                <div>
+                    <span>Y:</span>
+                    <input type="range" min="-0.8" max="0.8" step = "0.01" value="0.0" class="slider" id="torso-y">
+                    <span class="indicator" attached="torso-y"></span>
+                </div>
+                <div>
+                    <span>Z:</span>
+                    <input type="range" min="-0.8" max="0.8" step = "0.01" value="0.0" class="slider" id="torso-z">
+                    <span class="indicator" attached="torso-z"></span>
+                </div>
+            </fieldset>
+            <fieldset class = "slide-container">
+                <legend>Rotation</legend>
+                <div>
+                    <span>Y:</span>
+                    <input type="range" min="-90" max="90" step = "1" value="27" class="slider" id="torso-rotate-y">
+                    <span class="indicator" attached="torso-rotate-y"></span><span>°</span>
+                </div>
+                <div>
+                    <span>Z:</span>
+                    <input type="range" min="-90" max="90" step = "1" value="-11" class="slider" id="torso-rotate-z">
+                    <span class="indicator" attached="torso-rotate-z"></span><span>°</span>
+                </div>
+            </fieldset>
+        </fieldset>
+
+        <fieldset class = "slide-container" id = 'head'>
+            <legend>Head</legend>
+            <fieldset class = "slide-container">
+                <legend>Rotation</legend>
+                <div>
+                    <span>X:</span>
+                    <input type="range" min="-45" max="45" step = "1" value="0" class="slider" id="head-rotate-x">
+                    <span class="indicator" attached="head-rotate-x"></span><span>°</span>
+                </div>
+                <div>
+                    <span>Y:</span>
+                    <input type="range" min="-90" max="90" step = "1" value="0" class="slider" id="head-rotate-y">
+                    <span class="indicator" attached="head-rotate-y"></span><span>°</span>
+                </div>
+                <div>
+                    <span>Z:</span>
+                    <input type="range" min="-60" max="60" step = "1" value="0" class="slider" id="head-rotate-z">
+                    <span class="indicator" attached="head-rotate-z"></span><span>°</span>
+                </div>
+            </fieldset>
+        </fieldset>
+
+        <fieldset class = "slide-container" id = "left-arm">
+            <legend>Left arm</legend>
+            <fieldset class = "slide-container" id = "upper-left-arm">
+                <legend>Upper left arm</legend>
+                <fieldset class = "slide-container">
+                    <legend>Rotation</legend>
+                    <div>
+                        <span>Y:</span>
+                        <input type="range" min="-180" max="180" step = "1" value="0" class="slider" id="upper-left-arm-rotate-y">
+                        <span class="indicator" attached="upper-left-arm-rotate-y"></span><span>°</span>
+                    </div>
+                    <div>
+                        <span>Z:</span>
+                        <input type="range" min="-180" max="180" step = "1" value="30" class="slider" id="upper-left-arm-rotate-z">
+                        <span class="indicator" attached="upper-left-arm-rotate-z"></span><span>°</span>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <fieldset class = "slide-container" id = 'lower-left-arm'>
+                <legend>Lower left arm</legend>
+                <fieldset class = "slide-container">
+                    <legend>Rotation</legend>
+                    <div>
+                        <span>Z:</span>
+                        <input type="range" min="-180" max="180" step = "1" value="61" class="slider" id="lower-left-arm-rotate-z">
+                        <span class="indicator" attached="lower-left-arm-rotate-z"></span><span>°</span>
+                    </div>
+                </fieldset>
+            </fieldset>
+        </fieldset>
+
+        <fieldset class = "slide-container" id = "right-arm">
+            <legend>Right arm</legend>
+            <fieldset class = "slide-container" id = "upper-right-arm">
+                <legend>Upper right arm</legend>
+                <fieldset class = "slide-container">
+                    <legend>Rotation</legend>
+                    <div>
+                        <span>Y:</span>
+                        <input type="range" min="-180" max="180" step = "1" value="0" class="slider" id="upper-right-arm-rotate-y">
+                        <span class="indicator" attached="upper-right-arm-rotate-y"></span><span>°</span>
+                    </div>
+                    <div>
+                        <span>Z:</span>
+                        <input type="range" min="-180" max="180" step = "1" value="45" class="slider" id="upper-right-arm-rotate-z">
+                        <span class="indicator" attached="upper-right-arm-rotate-z"></span><span>°</span>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <fieldset class = "slide-container" id = 'lower-right-arm'>
+                <legend>Lower right arm</legend>
+                <fieldset class = "slide-container">
+                    <legend>Rotation</legend>
+                    <div>
+                        <span>Z:</span>
+                        <input type="range" min="-180" max="180" step = "1" value="33" class="slider" id="lower-right-arm-rotate-z">
+                        <span class="indicator" attached="lower-right-arm-rotate-z"></span><span>°</span>
+                    </div>
+                </fieldset>
+            </fieldset>
+        </fieldset>
+    </div>
+
+
+    <script>//display the sliders' value synchronously
+        let indicators = document.getElementsByClassName("indicator");
+        for(let i = 0; i < indicators.length; i++) {
+            let indicator = indicators[i];
+            let slider = document.getElementById(indicator.getAttribute("attached"));
+            indicator.innerHTML = slider.value;
+            slider.addEventListener(
+                "input",
+                function() {
+                    indicator.innerHTML = slider.value;
+                },
+                false
+            );
+        }
+        
+        
+    </script>
+    
+</body>
+
+
+</html>
