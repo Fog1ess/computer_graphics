@@ -24,7 +24,6 @@
             flex-wrap: no wrap;
         }
     </style>
-    <script src="lib/gl-matrix.js"></script>
     <script type="module" src="robot.js" defer></script>
 </head>
 
@@ -74,12 +73,12 @@
                 <legend>Rotation</legend>
                 <div>
                     <span>X:</span>
-                    <input type="range" min="-45" max="45" step = "1" value="0" class="slider" id="head-rotate-x">
+                    <input type="range" min="-45" max="45" step = "1" value="19" class="slider" id="head-rotate-x">
                     <span class="indicator" attached="head-rotate-x"></span><span>°</span>
                 </div>
                 <div>
                     <span>Y:</span>
-                    <input type="range" min="-90" max="90" step = "1" value="0" class="slider" id="head-rotate-y">
+                    <input type="range" min="-90" max="90" step = "1" value="-41" class="slider" id="head-rotate-y">
                     <span class="indicator" attached="head-rotate-y"></span><span>°</span>
                 </div>
                 <div>
@@ -92,31 +91,31 @@
 
         <fieldset class = "slide-container" id = "left-arm">
             <legend>Left arm</legend>
-            <fieldset class = "slide-container" id = "upper-left-arm">
+            <fieldset class = "slide-container" id = "upperLeftArm">
                 <legend>Upper left arm</legend>
                 <fieldset class = "slide-container">
                     <legend>Rotation</legend>
                     <div>
                         <span>Y:</span>
-                        <input type="range" min="-180" max="180" step = "1" value="0" class="slider" id="upper-left-arm-rotate-y">
-                        <span class="indicator" attached="upper-left-arm-rotate-y"></span><span>°</span>
+                        <input type="range" min="-90" max="90" step = "1" value="0" class="slider" id="upperLeftArm-rotate-y">
+                        <span class="indicator" attached="upperLeftArm-rotate-y"></span><span>°</span>
                     </div>
                     <div>
                         <span>Z:</span>
-                        <input type="range" min="-180" max="180" step = "1" value="30" class="slider" id="upper-left-arm-rotate-z">
-                        <span class="indicator" attached="upper-left-arm-rotate-z"></span><span>°</span>
+                        <input type="range" min="-90" max="90" step = "1" value="30" class="slider" id="upperLeftArm-rotate-z">
+                        <span class="indicator" attached="upperLeftArm-rotate-z"></span><span>°</span>
                     </div>
                 </fieldset>
             </fieldset>
 
-            <fieldset class = "slide-container" id = 'lower-left-arm'>
+            <fieldset class = "slide-container" id = "lowerLeftArm">
                 <legend>Lower left arm</legend>
                 <fieldset class = "slide-container">
                     <legend>Rotation</legend>
                     <div>
                         <span>Z:</span>
-                        <input type="range" min="-180" max="180" step = "1" value="61" class="slider" id="lower-left-arm-rotate-z">
-                        <span class="indicator" attached="lower-left-arm-rotate-z"></span><span>°</span>
+                        <input type="range" min="-90" max="90" step = "1" value="61" class="slider" id="lowerLeftArm-rotate-z">
+                        <span class="indicator" attached="lowerLeftArm-rotate-z"></span><span>°</span>
                     </div>
                 </fieldset>
             </fieldset>
@@ -124,31 +123,94 @@
 
         <fieldset class = "slide-container" id = "right-arm">
             <legend>Right arm</legend>
-            <fieldset class = "slide-container" id = "upper-right-arm">
+            <fieldset class = "slide-container" id = "upperRightArm">
                 <legend>Upper right arm</legend>
                 <fieldset class = "slide-container">
                     <legend>Rotation</legend>
                     <div>
                         <span>Y:</span>
-                        <input type="range" min="-180" max="180" step = "1" value="0" class="slider" id="upper-right-arm-rotate-y">
-                        <span class="indicator" attached="upper-right-arm-rotate-y"></span><span>°</span>
+                        <input type="range" min="-90" max="90" step = "1" value="0" class="slider" id="upperRightArm-rotate-y">
+                        <span class="indicator" attached="upperRightArm-rotate-y"></span><span>°</span>
                     </div>
                     <div>
                         <span>Z:</span>
-                        <input type="range" min="-180" max="180" step = "1" value="45" class="slider" id="upper-right-arm-rotate-z">
-                        <span class="indicator" attached="upper-right-arm-rotate-z"></span><span>°</span>
+                        <input type="range" min="-90" max="90" step = "1" value="45" class="slider" id="upperRightArm-rotate-z">
+                        <span class="indicator" attached="upperRightArm-rotate-z"></span><span>°</span>
                     </div>
                 </fieldset>
             </fieldset>
 
-            <fieldset class = "slide-container" id = 'lower-right-arm'>
+            <fieldset class = "slide-container" id = 'lowerRightArm'>
                 <legend>Lower right arm</legend>
                 <fieldset class = "slide-container">
                     <legend>Rotation</legend>
                     <div>
                         <span>Z:</span>
-                        <input type="range" min="-180" max="180" step = "1" value="33" class="slider" id="lower-right-arm-rotate-z">
-                        <span class="indicator" attached="lower-right-arm-rotate-z"></span><span>°</span>
+                        <input type="range" min="-90" max="90" step = "1" value="33" class="slider" id="lowerRightArm-rotate-z">
+                        <span class="indicator" attached="lowerRightArm-rotate-z"></span><span>°</span>
+                    </div>
+                </fieldset>
+            </fieldset>
+        </fieldset>
+        <fieldset class = "slide-container" id = "left-leg">
+            <legend>Left leg</legend>
+            <fieldset class = "slide-container" id = "upperLeftLeg">
+                <legend>Upper left leg</legend>
+                <fieldset class = "slide-container">
+                    <legend>Rotation</legend>
+                    <div>
+                        <span>X:</span>
+                        <input type="range" min="-90" max="90" step = "1" value="0" class="slider" id="upperLeftLeg-rotate-x">
+                        <span class="indicator" attached="upperLeftLeg-rotate-x"></span><span>°</span>
+                    </div>
+                    <div>
+                        <span>Z:</span>
+                        <input type="range" min="-90" max="90" step = "1" value="13" class="slider" id="upperLeftLeg-rotate-z">
+                        <span class="indicator" attached="upperLeftLeg-rotate-z"></span><span>°</span>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <fieldset class = "slide-container" id = "lowerLeftLeg">
+                <legend>Lower left leg</legend>
+                <fieldset class = "slide-container">
+                    <legend>Rotation</legend>
+                    <div>
+                        <span>Z:</span>
+                        <input type="range" min="-90" max="90" step = "1" value="0" class="slider" id="lowerLeftLeg-rotate-z">
+                        <span class="indicator" attached="lowerLeftLeg-rotate-z"></span><span>°</span>
+                    </div>
+                </fieldset>
+            </fieldset>
+        </fieldset>
+
+        <fieldset class = "slide-container" id = "right-leg">
+            <legend>Right leg</legend>
+            <fieldset class = "slide-container" id = "upperRightLeg">
+                <legend>Upper right leg</legend>
+                <fieldset class = "slide-container">
+                    <legend>Rotation</legend>
+                    <div>
+                        <span>X:</span>
+                        <input type="range" min="-90" max="90" step = "1" value="0" class="slider" id="upperRightLeg-rotate-x">
+                        <span class="indicator" attached="upperRightLeg-rotate-x"></span><span>°</span>
+                    </div>
+                    <div>
+                        <span>Z:</span>
+                        <input type="range" min="-90" max="90" step = "1" value="0" class="slider" id="upperRightLeg-rotate-z">
+                        <span class="indicator" attached="upperRightLeg-rotate-z"></span><span>°</span>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <fieldset class = "slide-container" id = 'lowerRightLeg'>
+                <legend>Lower right leg</legend>
+                <fieldset class = "slide-container">
+                    <legend>Rotation</legend>
+                    <div>
+                        <span>Z:</span>
+                        <input type="range" min="-90" max="90" step = "1" value="33" class="slider" id="lowerRightLeg-rotate-z">
+                        <span class="indicator" attached="lowerRightLeg-rotate-z"></span><span>°</span>
                     </div>
                 </fieldset>
             </fieldset>

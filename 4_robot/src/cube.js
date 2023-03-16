@@ -1,7 +1,7 @@
 class Cube {
     static defaultSize = 0.5;
     static numPositions = 36;
-    static positionDim = 4;
+    static pointDim = 4;
     static indices = [// Surface of the cube consist of these 12 triangles
         1, 0, 3,  3, 2, 1,
         2, 3, 7,  7, 6, 2,
