@@ -39,15 +39,14 @@ main();
  * @param {Float32Array} data 
  */
 function cubeData(cube, data) {
-  let dim = 4;
   let num = Cube.numPositions;
   for(let i = 0; i < num; i++) {
-    for(let j = 0; j < dim; j++) {
+    for(let j = 0; j < pointDim; j++) {
       data.push(cube.vertices[Cube.indices[i]][j]);
       
     }
-    for(let j = 0; j < 4; j++) {
-      data.push(cube.faceColors[~~(i / 6)][j]);
+    for(let j = 0; j < colorDim; j++) {
+      data.push(cube.faceColors[~~(i / cube.faceColors.length)][j]);
     }
   }
 }
