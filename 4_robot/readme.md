@@ -1,17 +1,18 @@
 # 3D Robot
-## Demos
-1. A 3D cube 
-2. each face has different colors
-	3. #TO test the  prototype
-	4. #TO review GLSL and webGL programs
-3. Rotating 3D cube
-4. Translating and Rotating 3d cube
-## High-level Concepts
+## Modeling a 3D cube
+- each face has different color
+- OOP in JavaScript (prototype)
+## Affine Transformation
+- Translating and Rotating 3d cube
+- Matrix multiplication
+## Hierarchical Structure
+
+# Implementation
 1. Hierarchy of the robot:
 	- torso
 		- head
-		- upper (l/r) arms
-			- lower (l/r) arms
+		- upper arms
+			- lower arms
 1. Available Transformation
 	- torso
 		- `translation(x,y,z)`
@@ -20,8 +21,8 @@
 		- `rotation(x,y,z)`
 	- upper arms
 		- `rotation(y,z)`
+	- lower arms
+		- `rotation(z)`
 
-## Data Structure
 1. Hierarchy of the objects: Tree structure
-	- ![[Pasted image 20230307205633.png]]
-2. Tree: left child, right sibling
+	- left child, right sibling
