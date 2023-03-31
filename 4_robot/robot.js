@@ -1,4 +1,4 @@
-import  "./lib/gl-matrix.js";
+//import  "../General/lib/gl-matrix.js";
 import { Cube } from "./src/cube.js"
 import { Figure } from "./src/figure.js";
 import { createShader, createProgram } from "./src/initShader.js";
@@ -157,15 +157,6 @@ function main(){
     //Figure.traverse(torso);//update transformation matrices
     //gl.drawArrays(gl.TRIANGLES, 0, 1800);
     let modelViewMatrixLoc = gl.getUniformLocation(program, "transformMatrix");
-    const fieldOfView = (45 * Math.PI) / 180; // in radians
-    const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
-    const zNear = 0.1;
-    const zFar = 100.0;
-    const projectionMatrix = glMatrix.mat4.create();
-  
-    // note: glmatrix.js always has the first argument
-    // as the destination to receive the result.
-    glMatrix.mat4.perspective(projectionMatrix, fieldOfView, aspect, zNear, zFar);
 
     function draw(id, loc) { // use temp to draw
       let figure = figures[id];

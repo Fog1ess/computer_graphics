@@ -1,4 +1,4 @@
-import '../lib/gl-matrix.js';
+import '../../General/lib/gl-matrix.js';
 import { Cube } from './cube.js'
 // default settings of different parts
 
