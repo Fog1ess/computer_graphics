@@ -3,18 +3,15 @@ let vertexShaderSrc =
 // attributes
 in vec3 vertPosition;
 in vec3 vertColor;
-in vec3 vertNormal; // NEW !!!!, need for N * L
+in vec3 vertNormal;
 
 uniform mat4 projMatrix;
 uniform mat4 modelToWorldMatrix;
 uniform mat4 viewMatrix;  
 
-// New!!! new uniforms for 
-// material color and ambient light
 uniform vec3 ambientLightColor;
-uniform vec3 materialColor;
 
-uniform vec3 lightDirection;
+uniform vec3 lightDirection; // light with fixed direction
 uniform vec3 diffuseLightColor;
 
 // illumination color we pass to fragment shader
@@ -22,10 +19,10 @@ out vec4 passToFragColor;
 
 void main(){
     
-    gl_Position = projMatrix * viewMatrix *modelToWorldMatrix * vec4(vertPosition,1.0);
+    gl_Position = projMatrix * viewMatrix * modelToWorldMatrix * vec4(vertPosition,1.0);
 
-    // Iambient  = IambientColor * MaterialColor
-    vec3 Ia = ambientLightColor * materialColor;
+    // Iambient = IambientColor * MaterialColor
+    vec3 Ia = ambientLightColor * vertColor;
 
     // calculate Idiffuse = IdiffuseColor * MaterialColor * ( N* L) 
     // need unit vectors and 
@@ -43,9 +40,9 @@ void main(){
     vec3 diffuseLightDirection = normalize( lightDirection - fragPosition); // get a vector from point to light source
     
 
-    vec3 L = diffuseLightDirection ; 
+    vec3 L = diffuseLightDirection; 
     float lambert = max(0.0, dot(N, L));
-    passToFragColor = vec4(diffuseLightColor.xyz * materialColor  * lambert + Ia, 1.0);
+    passToFragColor = vec4(diffuseLightColor.xyz * vertColor  * lambert + Ia, 1.0);
     
 }`;
 

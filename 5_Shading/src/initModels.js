@@ -10,18 +10,20 @@ const {mat4} = glMatrix;
  * {mat4[]} matrices: transformation matrix of models
  */
 function initModels() {
-    let floor = new Model(cube(10), [0.0, 0.5, 0.0]);
-    let train = new Model(cube(0.2), [0.8, 0.8, 0.2]);
-    let trunk = new Model(uvCylinder(0.3, 2), [0.5, 0.4, 0.3]);
-    let rope = new Model(uvCylinder(0.02, 2), [0.8, 0.7, 0.6]);
-    let ball = new Model(uvSphere(0.1), [0.7, 0.0, 0.0]);
-    let ball2 = new Model(uvSphere(0.1), [0.0, 0.0, 0.7]);
-    let sun = new Model(uvSphere(0.1), [1.0, 1.0, 0.8]); // Light source
+    let cubeModel = new Model(cube(1.0), [0.8, 0.7, 0.6]);
+    let torusModel = new Model(uvTorus(0.5, 0.3), [0.3, 0.5, 0.7]);
 
-    let models = [floor, train, trunk, rope, ball, ball2, sun];
+    let models = [cubeModel, torusModel];
     let matrices = models.map(x => mat4.create());
 
-    let dataInfo =  integrateData(models);
+    //initial positions
+    mat4.rotateX(matrices[0], matrices[0], 45 * Math.PI / 180);
+    mat4.rotateY(matrices[0], matrices[0], 30 * Math.PI / 180);
+    mat4.rotateZ(matrices[0], matrices[0], 15 * Math.PI / 180);
+    mat4.translate(matrices[0], matrices[0], [1, 0, 0]);
+    mat4.translate(matrices[1], matrices[1], [-1, 0, 0]);
+
+    let dataInfo = integrateData(models);
     return {
         models: models,
         matrices: matrices,
@@ -36,7 +38,7 @@ function initModels() {
 /**
  * Merge data of the models. Still need integration to send to VBOs.
  * @param {Model[]} models arrays of all the models in the world
- * @returns {ModelDataInformation} Five arrays containing information of all the models.
+ * @returns {DataInformation} Five arrays containing information of all the models.
  */
 function integrateData(models) {
 

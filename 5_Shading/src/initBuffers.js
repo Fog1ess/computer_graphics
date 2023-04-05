@@ -3,7 +3,7 @@ import { Model } from "../../General/src/model.js";
  * bind buffer, send attributes and indices data
  * @param {WebGLRenderingContext} gl 
  * @param {WebGLProgram} program
- * @param {ModelDataInformation} data data of the models
+ * @param {*} data data of the models
  */
 function initBuffers(gl, program, data) {
     // all attributes are gl.FLOAT type. Code to be expanded
