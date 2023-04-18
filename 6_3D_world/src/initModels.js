@@ -10,7 +10,7 @@ const {mat4} = glMatrix;
  * {mat4[]} matrices: transformation matrix of models
  */
 function initModels() {
-    let floor = new Model(cube(10), [0.0, 0.5, 0.0]);
+    let floor = new Model(cube(100), [0.0, 0.5, 0.0]);
     let train = new Model(cube(0.2), [0.8, 0.8, 0.2]);
     let trunk = new Model(uvCylinder(0.3, 2), [0.5, 0.4, 0.3]);
     let rope = new Model(uvCylinder(0.02, 2), [0.8, 0.7, 0.6]);
@@ -26,6 +26,7 @@ function initModels() {
         models: models,
         matrices: matrices,
         counts: dataInfo.counts,
+        offsets: dataInfo.offsets,
         attributes: dataInfo.attributes,
         elements: dataInfo.elements
     };

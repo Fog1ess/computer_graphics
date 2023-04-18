@@ -21,7 +21,7 @@ function animate(matrices, time) {
 
     let floorID = animateId["floor"];
     let floorMat = matrices[floorID];
-    mat4.scale(floorMat, floorMat, [1, 1, 0.01]);
+    mat4.scale(floorMat, floorMat, [1, 1, 0.001]);
     
 
     let trainID = animateId["train"];
@@ -60,9 +60,6 @@ function animate(matrices, time) {
     let sunOrbitRadius = 6.0;
     mat4.rotateY(sunMat, sunMat, sunAngle);
     mat4.translate(sunMat, sunMat, [-1*sunOrbitRadius, 0, 0]);
-
-
-
 
 }
 

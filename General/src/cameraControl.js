@@ -36,21 +36,23 @@ function cameraKeydownEventListener(event, cameraPosition, cameraTarget, cameraU
     vec3.add(position, position, delta);
   } else if (event.key === 'a') {// strafe left
     vec3.scale(delta, right, -1 * speed);
+    vec3.add(target, target, delta);
     vec3.add(position, position, delta);
   } else if (event.key === 'd') {// strafe right
     vec3.scale(delta, right, 1 * speed);
+    vec3.add(target, target, delta);
     vec3.add(position, position, delta);
   } else if (event.key === 'i' ) {
     vec3.scale(delta, up, 1 * speed);
-    vec3.add(position, position, delta);
+    vec3.add(target, target, delta);
   } else if (event.key === 'k' ) {
     vec3.scale(delta, up, -1 * speed);
-    vec3.add(position, position, delta);
+    vec3.add(target, target, delta);
   } else if (event.key === 'j' || event.key === 'l') {
     // Panning left
     let theta = speed / 180 * 10; // the degree to rotate (in radians)
     // Panning right
-    if(event.key === 'i'){
+    if(event.key === 'l'){
         theta = -theta;
     }
     let mat = mat4.create();
