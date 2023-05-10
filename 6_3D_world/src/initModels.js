@@ -21,7 +21,7 @@ function initModels() {
     let models = [floor, train, trunk, rope, ball, ball2, sun];
     let matrices = models.map(x => mat4.create());
 
-    let dataInfo =  integrateData(models);
+    let dataInfo = integrateData(models);
     return {
         models: models,
         matrices: matrices,

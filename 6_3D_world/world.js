@@ -9,7 +9,7 @@ const { mat4 , vec3 } = glMatrix;
 let time = 0.0;
 let deltaTime = 0.1;
 var cameraPosition = vec3.fromValues(0, -4, 1);
-var cameraTarget = vec3.fromValues(0, 0, 0);
+var cameraTarget = vec3.fromValues(0, 0, 1);
 var cameraUp = vec3.fromValues(0, 0, 1);
 var cameraSpeed = 0.05;
 

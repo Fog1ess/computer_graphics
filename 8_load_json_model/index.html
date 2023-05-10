@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <title>COSC475 HW8 Box</title>
+    <link rel="stylesheet" href="../General/style/slider.css">
+    <script type="module" src="./src/box.js" defer></script>
+</head>
+
+<body>
+    <h1>Box (Use WASD, IJKL to move the camera)</h1>
+    <canvas id="canvas" width="512" height="512"></canvas>
+
+    <div class = "ui-container">
+        <fieldset class = "slide-container" id = "box">
+            <legend>Box Transformation</legend>
+            <fieldset class = "slide-container">
+                <legend>Translation</legend>
+                <div>
+                    <span>X:</span>
+                    <input type="range" min="-1" max="1" step = "0.01" value="0.0" class="slider" id="box-x">
+                    <span class="indicator" attached="box-x"></span>
+                </div>
+                <div>
+                    <span>Y:</span>
+                    <input type="range" min="-1" max="1" step = "0.01" value="0.0" class="slider" id="box-y">
+                    <span class="indicator" attached="box-y"></span>
+                </div>
+                <div>
+                    <span>Z:</span>
+                    <input type="range" min="-1" max="1" step = "0.01" value="0.0" class="slider" id="box-z">
+                    <span class="indicator" attached="box-z"></span>
+                </div>
+            </fieldset>
+            <fieldset class = "slide-container">
+                <legend>Rotation</legend>
+                <div>
+                    <span>X:</span>
+                    <input type="range" min="-180" max="180" step = "1" value="0" class="slider" id="box-rotate-x">
+                    <span class="indicator" attached="box-rotate-x"></span><span>°</span>
+                </div>
+                <div>
+                    <span>Y:</span>
+                    <input type="range" min="-180" max="180" step = "1" value="0" class="slider" id="box-rotate-y">
+                    <span class="indicator" attached="box-rotate-y"></span><span>°</span>
+                </div>
+                <div>
+                    <span>Z:</span>
+                    <input type="range" min="-180" max="180" step = "1" value="0" class="slider" id="box-rotate-z">
+                    <span class="indicator" attached="box-rotate-z"></span><span>°</span>
+                </div>
+            </fieldset>
+        </fieldset>
+        <fieldset class = "slide-container">
+            <legend>Ambient Light Direction</legend>
+            <div>
+                <span>X:</span>
+                <input type="range" min="-1.0" max="1.0" step = "0.01" value="-0.54" class="slider" id="light-x">
+                <span class="indicator" attached="light-x"></span>
+            </div>
+            <div>
+                <span>Y:</span>
+                <input type="range" min="-1.0" max="1.0" step = "0.01" value="0.91" class="slider" id="light-y">
+                <span class="indicator" attached="light-y"></span>
+            </div>
+            <div>
+                <span>Z:</span>
+                <input type="range" min="-1.0" max="1.0" step = "0.01" value="0.0" class="slider" id="light-z">
+                <span class="indicator" attached="light-z"></span>
+            </div>
+        </fieldset>
+    </div>
+
+
+    <script src="../General/src/sliderDisplay.js"></script>
+    
+</body>
+
+
+</html>

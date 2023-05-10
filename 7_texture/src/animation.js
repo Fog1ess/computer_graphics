@@ -1,0 +1,3 @@
+function animate(matrice, time) {
+    
+}

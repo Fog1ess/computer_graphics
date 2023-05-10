@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <title>COSC475 Final Project</title>
+    <link rel="stylesheet" href="../General/style/slider.css">
+    <script type="module" src="./js/app.js" defer></script>
+</head>
+<body>
+    <canvas id="canvas" height="800" width="800"></canvas>
+    <div class = "ui-container">
+        <!-- <fieldset>
+            <legend>Model info</legend>
+            <div>
+                <p>Model: 3</p>
+            </div>
+        </fieldset> -->
+
+        <fieldset class = "slide-container">
+            <legend>Light Direction</legend>
+            <div>
+                <span>X:</span>
+                <input type="range" min="-1.0" max="1.0" step = "0.01" value="1" class="slider" id="light-x">
+                <span class="indicator" attached="light-x"></span>
+            </div>
+            <div>
+                <span>Y:</span>
+                <input type="range" min="-1.0" max="1.0" step = "0.01" value="1" class="slider" id="light-y">
+                <span class="indicator" attached="light-y"></span>
+            </div>
+            <div>
+                <span>Z:</span>
+                <input type="range" min="-1.0" max="1.0" step = "0.01" value="1" class="slider" id="light-z">
+                <span class="indicator" attached="light-z"></span>
+            </div>
+        </fieldset>
+    </div>
+    <script src="./js/sliderDisplay.js"></script>
+    
+</body>

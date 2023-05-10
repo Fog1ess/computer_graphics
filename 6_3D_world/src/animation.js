@@ -13,27 +13,32 @@ let animateId = {
 
 /**
  * Set the motion mode of the object and calculate the transformation matrix based on time.
- * @param {mat4[]} matrices 
- * @param {*} time 
+ * @param {mat4[]} matrices transformation matrices of the models (according to the animateId)
+ * @param {*} time the time parameter
  */
 function animate(matrices, time) {
     matrices.map(x=>mat4.identity(x));  
 
     let floorID = animateId["floor"];
     let floorMat = matrices[floorID];
-    mat4.scale(floorMat, floorMat, [1, 1, 0.001]);
+    mat4.scale(floorMat, floorMat, [1, 1, 0.001]); // compress the huge cube to a slice floor
     
 
+    // A train keep running
     let trainID = animateId["train"];
     let trainMat = matrices[trainID];
     let period = 10;
     mat4.translate(trainMat, trainMat, [-5.0 + 1.0 * (time % period), -2, 0.15]);
 
+    
+    // A cylinder moving up and down
     let trunkID = animateId["trunk"];
     let trunkMat = matrices[trunkID];
     period = 5;
     mat4.translate(trunkMat, trunkMat, [1, 1, Math.sin(time/period) + 2]);
 
+
+    // A moving dumbbell (by one stick and two bells)
     let ropeID = animateId["rope"];
     let ropeMat = matrices[ropeID];
     period = 15;

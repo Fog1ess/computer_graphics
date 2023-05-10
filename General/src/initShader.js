@@ -1,11 +1,10 @@
 /**
- * Compile shaders
+ * @function createShader Compile shaders
  * @param {WebGLRenderingContext} gl webGL context
  * @param {*} type gl.VERTEX_SHADER or gl.FRAGMENT_SHADER
  * @param {String} source source code
- * @returns 
+ * @returns {Shader} return shader if compie succeed
  */
-// 
 function createShader(gl, type, source){
     let shader = gl.createShader(type);
     gl.shaderSource(shader, source);
@@ -23,7 +22,7 @@ function createShader(gl, type, source){
  * @param {WebGLRenderingContext} gl webGL context
  * @param {String} vertexShaderSrc source code of vertex shader
  * @param {String} fragmentShaderSrc source code of fragment shader
- * @returns {WebGLProgram}
+ * @returns {Boolean} True if program is created and used successfully
  */
 function createAndUseProgram(gl, vertexShaderSrc, fragmentShaderSrc){
     let vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSrc);
@@ -35,10 +34,10 @@ function createAndUseProgram(gl, vertexShaderSrc, fragmentShaderSrc){
     let success = gl.getProgramParameter(program, gl.LINK_STATUS);
     if (success) {
         gl.useProgram(program);
-        return program;
+        return true;
     }
     console.log(gl.getProgramInfoLog(program));
+    return false;
 }
-
 
 export {createAndUseProgram};
